@@ -12,11 +12,11 @@ const ContextProvider = (props) => {
     const [loading, setLoading] = useState(false);
     const [resultData, setResultData] = useState("")
 
-    const delayParam = (index,nextWord) => [
-        setTimeout(function() {
-            setResultData(prev =>prev+nextWord);
-        },75*index)
-    ]
+    const delayPara = (index,nextWord) => {
+        setTimeout(function () {
+            setResultData(prev=>prev+nextWord);
+        },10*index)
+    }
 
     const newChat = () => {
         setLoading(false)
@@ -40,8 +40,8 @@ const ContextProvider = (props) => {
                 } catch (error) {
                     console.error("Error while sending prompt:", error);
                 }
-                setInput("")
-                let responseArray =  response.split("**");
+            }
+            let responseArray =  response.split("**");
                     let newResponse = '';
                     for(let i = 0; i < responseArray.length; i++) {
                         if(i === 0 || i%2 !== 1) {
@@ -50,18 +50,19 @@ const ContextProvider = (props) => {
                         else {
                             newResponse += "<b>"+responseArray[i]+"</b>";
                         }
-                        console.log({ i, currentSegment: responseArray[i], newResponse });
-        
+                        // console.log({ i, currentSegment: responseArray[i], newResponse });
                     }
+                    // setResultData(newResponse)
                     let newResponse2 = newResponse.split("*").join(<br/>)
                     // setResultData(newResponse2)
                     let newResponseArray = newResponse2.split(" ");
-                    for(let i = 0; i<newResponseArray; i++){
+                    for(let i = 0; i < newResponseArray.length; i++){
                         const nextWord = newResponseArray[i];
-                        delayParam(i,nextWord+" ")
+                        delayPara(i,nextWord+" ")
                     }
+                    
                     setLoading(false)
-            }
+                    setInput("")
         
     };
 

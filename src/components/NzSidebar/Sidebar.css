@@ -1,3 +1,7 @@
 .sidebar img {
     width: 20px;
 }
+
+.recent {
+    animation: fadeIn 2s;
+}

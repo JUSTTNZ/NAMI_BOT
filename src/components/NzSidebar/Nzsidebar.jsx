@@ -12,22 +12,23 @@ const Nzsidebar = () => {
   }
 
   return (
-    <div className='sidebar inline-flex flex-col justify-between h-screen bg-[#f0f4f9] py-6 px-3.5'>
+    <div className='sidebar hidden  md:inline-flex md:flex-col md:justify-between md:h-[100vh] md:bg-[#f0f4f9] md:py-6 md:px-3.5'>
         <div className=''>
             <img onClick={() => setExtended(prev=>!prev)} className='block ml-2.5 cursor-pointer' src={assets.menu_icon} alt="" />
             <div onClick={() => newChat()} className='mt-12 inline-flex items-center gap-2.5 px-3.5 py-3.5 bg-[#e6eaf1] rounded-full text-sm text-gray-500 cursor-pointer'>
                 <img  src={assets.plus_icon} alt="" />
                 {extended? <p className=''>New Chat</p>: null}
             </div>
-            {extended? <div className='flex flex-col'>
+            {extended? <div className='recent flex flex-col'>
                 <p className='mt-8 mb-5'>Recent</p>
-                {prevPrompt.map((item,index) => 
-                    (
-                      <div key={index} className='flex items-center gap-2.5 p-2.5 pr-10 rounded-[50px] text-[#282828] hover:bg-[#e2e6eb]'>
+                {prevPrompt.map((item,index) => {
+                  return (
+                      <div key={index}  onClick={()=>loadPrompt(item)} className='flex cursor-pointer items-center gap-2.5 p-2.5 pr-10 rounded-[50px] text-[#282828] hover:bg-[#e2e6eb]'>
                           <img src={assets.message_icon} alt="" />
-                          <p onClick={() => loadPrompt(item)} className=''>{item.slice(0,18)}...</p>
+                          <p  className=''>{item.slice(0,18)}...</p>
                       </div>
                     )
+                }  
                 )}
                 
             </div>: null }
