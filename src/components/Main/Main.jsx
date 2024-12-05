@@ -8,7 +8,9 @@ const Main = () => {
   return (
     <div className='flex-1 min-h-screen pb-[15vh] relative'>
       <div className='flex items-center justify-between text-xl p-5 text-[#585858]'>
-        <p>NZ</p>
+       <p class="text-transparent bg-clip-text bg-gradient-to-b from-blue-500 to-red-500 text-4xl font-bold animate-gradient-shine">
+  NZ-BOT
+</p>
         <img className='w-10 rounded-full' src={assets.user_icon} alt="" />
       </div>
       <div className='max-w-[900px] m-auto'>
