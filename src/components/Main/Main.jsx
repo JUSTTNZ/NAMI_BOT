@@ -43,7 +43,7 @@ const Main = () => {
             <p>{recentPrompt}</p>
           </div>
           <div className='flex items-start gap-5'>
-            <img src={assets.gemini_icon} alt="" />
+            <img className='hidden md:block'src={assets.gemini_icon} alt="" />
             {loading? 
               <div className=' loader w-full flex flex-col gap-2.5'>
                 <hr className=''/>
