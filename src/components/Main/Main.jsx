@@ -15,7 +15,7 @@ const Main = () => {
         {!showResult ? 
         <>
         <div className='my-8 mx-0 text-6xl text-[#c4c7c5] font-medium p-5'>
-            <p><span className='greet-span'>Hello, Dev.</span></p>
+            <p><span className='greet-span'>Hello,Genius</span></p>
             <p>How can i help you today?</p>
         </div>
         <div className='cards mb-[60px]'>
