@@ -1,11 +1,7 @@
 
-import {
-    GoogleGenerativeAI,
-    HarmCategory,
-    HarmBlockThreshold,
-  } from "@google/generative-ai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
   
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = "AIzaSyCpgZmZdnveCayqFeQttYqEEwrFc9aQwnE";
   console.log(apiKey);
   
   const genAI = new GoogleGenerativeAI(apiKey);
@@ -34,7 +30,9 @@ import {
     
     try {
         const result = await chatSession.sendMessage(prompt);
+        const response = result.response
         console.log(result.response.text());
+        return response.text();
     } catch (error) {
         console.log("error",error);
         

@@ -1,25 +1,87 @@
-import { createContext, useEffect } from "react";
+import { createContext, useState } from "react";
 import run from "../config/nami";
 
 export const Context = createContext();
 
 const ContextProvider = (props) => {
+
+    const [input, setInput] = useState("");
+    const [recentPrompt, setRecentPrompt] = useState("");
+    const [prevPrompt, setPrevPrompt] = useState([]);
+    const [showResult, setShowResult] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [resultData, setResultData] = useState("")
+
+    const delayParam = (index,nextWord) => [
+        setTimeout(function() {
+            setResultData(prev =>prev+nextWord);
+        },75*index)
+    ]
+
+    const newChat = () => {
+        setLoading(false)
+        setShowResult(false);
+    }
     const onSent = async (prompt) => {
-        try {
-            const response = await run(prompt);
-            console.log("Response:", response); // Log or handle the response here
-        } catch (error) {
-            console.error("Error while sending prompt:", error);
-        }
+            setResultData("")
+            setLoading(true)
+            setShowResult(true)
+            let response;
+            if(prompt !== undefined) {
+                response = await run(prompt)
+                setRecentPrompt(prompt)
+            }
+            else {
+                try {
+                    setPrevPrompt(prev => [...prev,input])
+                    setRecentPrompt(input)
+                    response = await run(input)
+                    console.log("Response:", response); // Log or handle the response here
+                } catch (error) {
+                    console.error("Error while sending prompt:", error);
+                }
+                setInput("")
+                let responseArray =  response.split("**");
+                    let newResponse = '';
+                    for(let i = 0; i < responseArray.length; i++) {
+                        if(i === 0 || i%2 !== 1) {
+                            newResponse += responseArray[i];
+                        }
+                        else {
+                            newResponse += "<b>"+responseArray[i]+"</b>";
+                        }
+                        console.log({ i, currentSegment: responseArray[i], newResponse });
+        
+                    }
+                    let newResponse2 = newResponse.split("*").join(<br/>)
+                    // setResultData(newResponse2)
+                    let newResponseArray = newResponse2.split(" ");
+                    for(let i = 0; i<newResponseArray; i++){
+                        const nextWord = newResponseArray[i];
+                        delayParam(i,nextWord+" ")
+                    }
+                    setLoading(false)
+            }
+        
     };
 
     // Use useEffect to call onSent only once on mount
-    useEffect(() => {
-        onSent("What is React.js?");
-    }, []); // Empty dependency array ensures it runs only once
+    // useEffect(() => {
+    //     onSent("What is React.js?");
+    // }, []); // Empty dependency array ensures it runs only once
 
     const contextValue = {
         onSent, // Expose the onSent function to child components
+        prevPrompt,
+        setPrevPrompt,
+        setInput,
+        input,
+        loading,
+        setRecentPrompt,
+        recentPrompt,
+        showResult,
+        resultData,
+        newChat
     };
 
     return (
