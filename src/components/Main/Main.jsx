@@ -19,19 +19,19 @@ const Main = () => {
             <p>How can i help you today?</p>
         </div>
         <div className='cards mb-[60px]'>
-            <div className='h-[200px] p-3.5 bg-[#f0f4f9] rounded-lg relative cursor-pointer hover:bg-[#dfe4ea]'>
+            <div className='md:h-[200px] h-[100px] p-3.5 bg-[#f0f4f9] rounded-lg relative cursor-pointer hover:bg-[#dfe4ea]'>
                 <p className='text-[17px] text-[#585858] hover:text-[#dfe4ea' >Suggest beautiful places to see on an upcoming road trip</p>
                 <img className='w-9 p-1.5 absolute bg-white rounded-[20px] bottom-2.5 right-2.5' src={assets.compass_icon} alt="" />
             </div>
-            <div className='h-[200px] p-3.5 bg-[#f0f4f9] rounded-lg relative cursor-pointer hover:bg-[#dfe4ea]'>
+            <div className='md:h-[200px] h-[100px] p-3.5 bg-[#f0f4f9] rounded-lg relative cursor-pointer hover:bg-[#dfe4ea]'>
                 <p className='text-[17px] text-[#585858] hover:text-[#dfe4ea'>Briefly summarize this concept: urban planning</p>
                 <img className='w-9 p-1.5 absolute bg-white rounded-[20px] bottom-2.5 right-2.5' src={assets.bulb_icon} alt="" />
             </div>
-            <div className='h-[200px] p-3.5 bg-[#f0f4f9] rounded-lg relative cursor-pointer hover:bg-[#dfe4ea]'>
+            <div className='md:h-[200px] h-[100px] p-3.5 bg-[#f0f4f9] rounded-lg relative cursor-pointer hover:bg-[#dfe4ea]'>
                 <p className='text-[17px] text-[#585858] hover:text-[#dfe4ea'>Brainstorm team bonding activities for our work retreat</p>
                 <img className='w-9 p-1.5 absolute bg-white rounded-[20px] bottom-2.5 right-2.5' src={assets.message_icon} alt="" />
             </div>
-            <div className='h-[200px] p-3.5 bg-[#f0f4f9] rounded-lg relative cursor-pointer hover:bg-[#dfe4ea]'>
+            <div className='md:h-[200px] h-[100px] p-3.5 bg-[#f0f4f9] rounded-lg relative cursor-pointer hover:bg-[#dfe4ea]'>
                 <p className='text-[17px] text-[#585858]' >Improve the readability of the following code</p>
                 <img className='w-9 p-1.5 absolute bg-white rounded-[20px] bottom-2.5 right-2.5' src={assets.code_icon} alt="" />
             </div>
