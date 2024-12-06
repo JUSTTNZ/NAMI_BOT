@@ -12,7 +12,7 @@ const Nzsidebar = () => {
   }
 
   return (
-    <div className='sidebar hidden  md:inline-flex md:flex-col md:justify-between md:h-[100vh] md:bg-[#f0f4f9] md:py-6 md:px-3.5'>
+    <div className='sidebar hidden  md:inline-flex md:flex-col md:justify-between md:min-h-screen md:bg-[#f0f4f9] md:py-6 md:px-3.5'>
         <div className=''>
             <img onClick={() => setExtended(prev=>!prev)} className='block ml-2.5 cursor-pointer' src={assets.menu_icon} alt="" />
             <div onClick={() => newChat()} className='mt-12 inline-flex items-center gap-2.5 px-3.5 py-3.5 bg-[#e6eaf1] rounded-full text-sm text-gray-500 cursor-pointer'>
