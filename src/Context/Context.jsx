@@ -53,7 +53,7 @@ const ContextProvider = (props) => {
                         // console.log({ i, currentSegment: responseArray[i], newResponse });
                     }
                     // setResultData(newResponse)
-                    let newResponse2 = newResponse.split("*").join(<br/>)
+                    let newResponse2 = newResponse.split("*").join("<br/>")
                     // setResultData(newResponse2)
                     let newResponseArray = newResponse2.split(" ");
                     for(let i = 0; i < newResponseArray.length; i++){
